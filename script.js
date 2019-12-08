@@ -1,35 +1,40 @@
-// ==UserScript==
-// @name       glitch support dark mode
-// @namespace  SUPPORT-DARK-MODE
-// @version    0.1
-// @match      http://support.glitch.com/*
-// @description your friendly dark screen for support.glitch.com
-// @require    http://code.jquery.com/jquery-latest.js
-// ==/UserScript==
-if (!$("#JQUERY")){
-  document.createElement("script").id = "JQUERY"
-}
+//our friendly Definitions...
 
-$(document).append(
-  '<br /><center><button id="dm">DARK MODE</button></center>'
-);
+var Dark = document.createElement("button");
+var Light = document.createElement("button");
+//event Listeners
+Dark.addEventListener("click", function(){
+  __a("LIGHT")
+  Dark.style.visibility = "hidden";
+  Light.style.visibility = "visible";
+});
+Light.addEventListener("click", function(){
+  __a("DARK");
+  Light.style.visibility = "hidden";
+  Dark.style.visibility = "visible";
+});
 
-function darkmode() {
-  $("body").css("background-color", "black");
-  $("#dm").hide();
-  if (!$("#lm")) {
-    $(document).append(
-      '<br /><center><button onclick="lightmode()" id="lm">LIGHT MODE</button></center>'
-    );
-    return 0;
+Dark.innerHTML = "Light Mode"
+Light.innerHTML = "Dark Mode"
+
+
+
+
+
+
+
+
+//our glorious function
+function __a (mode) {
+  switch (mode){
+    case "DARK":
+      document.getElementsByTagName("body")[0].style.backgroundColor = "black"
+      break;
+    case "LIGHT":
+      document.getElementsByTagName("body")[0].style.backgroundColor = "white"
+      break;
+    default:
+      document.getElementsByTagName("body")[0].style.backgroundColor = "white"
+      break;//just for formality
   }
-  $("#lm").show();
-  return 0;
-}
-
-function lightmode() {
-  $("body").css("background-color", "white");
-  $("#lm").hide();
-  $("#dm").show();
-  return 0;
 }
