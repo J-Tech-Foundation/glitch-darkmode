@@ -6,9 +6,12 @@
 // @description your friendly dark screen for support.glitch.com
 // @require    http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
+if (!$("#JQUERY")){
+  document.createElement("script").id = "JQUERY"
+}
 
 $(document).append(
-  '<br /><center><button onclick="darkmode()" id="dm">DARK MODE</button></center>'
+  '<br /><center><button id="dm">DARK MODE</button></center>'
 );
 
 function darkmode() {
